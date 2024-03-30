@@ -239,7 +239,7 @@ def main():
     tokenizer, model = get_model(base_model=args.model)
     print(f"Loaded {args.model}.")
 
-    embedder = SentenceTransformer(args.embedder, device=device)
+    embedder = SentenceTransformer(args.embedder, device=device, offload_folder='offload_folder')
     print(f"loaded {args.embedder}.")
 
     demonstrations = load_all_demonstrations(args.data_path.replace("test", "train").replace("validation", "train"))
