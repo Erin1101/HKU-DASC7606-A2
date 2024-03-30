@@ -195,8 +195,8 @@ class PhiMLP(nn.Module):
         super().__init__()
         self.config = config
         self.activation_fn = ACT2FN[config.hidden_act]
-        self.fc1 = nn.Linear("Write Your Code Here", config.intermediate_size)
-        self.fc2 = nn.Linear(config.intermediate_size, "Write Your Code Here")
+        self.fc1 = nn.Linear(config.hidden_size, config.intermediate_size)
+        self.fc2 = nn.Linear(config.intermediate_size, config.hidden_size)
 
     def forward(self, hidden_states: torch.Tensor) -> torch.Tensor:
         hidden_states = self.fc1(hidden_states)
@@ -249,10 +249,10 @@ class PhiAttention(nn.Module):
                 f" and `num_heads`: {self.num_heads})."
             )
 
-        self.q_proj = nn.Linear("Write Your Code Here", self.num_heads * self.head_dim, bias=True)
-        self.k_proj = nn.Linear("Write Your Code Here", self.num_key_value_heads * self.head_dim, bias=True)
-        self.v_proj = nn.Linear("Write Your Code Here", self.num_key_value_heads * self.head_dim, bias=True)
-        self.dense = nn.Linear(self.num_heads * self.head_dim, "Write Your Code Here", bias=True)
+        self.q_proj = nn.Linear(self.hidden_size, self.num_heads * self.head_dim, bias=True)
+        self.k_proj = nn.Linear(self.hidden_size, self.num_key_value_heads * self.head_dim, bias=True)
+        self.v_proj = nn.Linear(self.hidden_size, self.num_key_value_heads * self.head_dim, bias=True)
+        self.dense = nn.Linear(self.num_heads * self.head_dim, self.hidden_size, bias=True)
 
         self.qk_layernorm = config.qk_layernorm
         if self.qk_layernorm:
@@ -351,7 +351,7 @@ class PhiAttention(nn.Module):
 
         # Queries and keys upcast to fp32 is required by Phi-2 to avoid overflow
         attn_weights = torch.matmul(
-            "Write Your Code Here", "Write Your Code Here"
+           query_states, key_states.transpose(-1, -2)
         ) / math.sqrt(self.head_dim)
 
         if attn_weights.size() != (bsz, self.num_heads, q_len, kv_seq_len):
@@ -371,7 +371,7 @@ class PhiAttention(nn.Module):
         attn_weights = nn.functional.softmax(attn_weights, dim=-1, dtype=torch.float32).to(value_states.dtype)
         attn_weights = nn.functional.dropout(attn_weights, p=self.attention_dropout, training=self.training)
 
-        attn_output = torch.matmul("Write Your Code Here", "Write Your Code Here")
+        attn_output = torch.matmul(attn_weights, value_states)
 
         if attn_output.size() != (bsz, self.num_heads, q_len, self.head_dim):
             raise ValueError(
@@ -441,7 +441,7 @@ class PhiDecoderLayer(nn.Module):
         attn_outputs = self.resid_dropout(attn_outputs)
 
         feed_forward_hidden_states = self.resid_dropout(self.mlp(hidden_states))
-        hidden_states = attn_outputs + feed_forward_hidden_states + "Write Your Code Here"
+        hidden_states = attn_outputs + feed_forward_hidden_states + residual
         outputs = (hidden_states,)
 
         if output_attentions:
