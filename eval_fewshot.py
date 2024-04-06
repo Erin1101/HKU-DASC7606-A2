@@ -137,7 +137,7 @@ def generate_prompt(question, candidate_answers, prompt_type, N,
     indices = list(range(len(demonstrations)))
     if top_k: # task 5
         question_embeddings = llm_embedder(embedder, [question], True) # [1, n_dim]
-        similarity = question_embeddings @ demonstration_embeddings.transpose(0, 1) # [1, n_demo]
+        similarity = question_embeddings @ demonstration_embeddings.transpose() # [1, n_demo]
         indices_sorted = sorted(list(range(len(demonstrations))), key=lambda x: similarity[0][x], reverse=True)
         if top_k_reverse:
             indices = indices_sorted[:N][::-1] + indices_sorted[N:]
