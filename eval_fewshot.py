@@ -256,8 +256,8 @@ def main():
 
         with torch.no_grad():
             # task 6
-            outputs = model(encoding["input_ids"], attention_mask=encoding["attention_mask"])
-            log_likelihood = outputs.logits[0, -1, :]
+            outputs = model(encoding["input_ids"], attention_mask=encoding["attention_mask"], labels=encoding['labels'])
+            log_likelihood = -torch.nn.functional.cross_entropy(outputs.logits.view(-1, outputs.logits.size(-1)), labels.view(-1), reduction='mean')
 
         print("Saving results to {}".format(output_file))
         with open(output_file, "w", encoding="utf-8") as f:
