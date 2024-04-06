@@ -256,8 +256,8 @@ def main():
 
         with torch.no_grad():
             # task 6
-            outputs = model(**encoding)
-            log_likelihood = outputs.logits[0]
+            outputs = model(encoding["input_ids"], attention_mask=encoding["attention_mask"])
+            log_likelihood = outputs.logits[0, -1, :]
 
         print("Saving results to {}".format(output_file))
         with open(output_file, "w", encoding="utf-8") as f:
