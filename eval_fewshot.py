@@ -257,7 +257,9 @@ def main():
         with torch.no_grad():
             # task 6
             outputs = model(encoding["input_ids"], encoding['labels'])
-            log_likelihood = -torch.log_softmax(outputs.logits.max(dim=1), dim=-1)
+            #log_likelihood = -torch.log_softmax(outputs.logits.mean(dim=1), dim=-1)
+            max_logits, _ = outputs.logits.max(dim=1)
+            log_likelihood = -torch.log_softmax(max_logits, dim=-1)
 
 
         print("Saving results to {}".format(output_file))
