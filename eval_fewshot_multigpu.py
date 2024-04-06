@@ -266,7 +266,7 @@ def main():
 
         with torch.no_grad():
             # task 6
-            outputs = model(encoding["input_ids"], attention_mask=encoding["attention_mask"])
+            outputs = model(encoding["input_ids"])
             log_likelihood =  outputs.logits[0, -1, :]
 
 
