@@ -257,7 +257,10 @@ def main():
         with torch.no_grad():
             # task 6
             outputs = model(encoding["input_ids"], encoding['labels'])
-            log_likelihood = outputs.logits[0, -1, :]
+            logits = outputs.logits  # Shape: [batch_size, sequence_length, vocab_size]
+            target_ids = encoding["input_ids"]  # Assuming input_ids contains the target sequence
+            log_likelihood = -torch.nn.functional.cross_entropy(logits.view(-1, logits.shape[-1]), target_ids.view(-1))
+            #log_likelihood = outputs.logits[0, -1, :]
 
         print("Saving results to {}".format(output_file))
         with open(output_file, "w", encoding="utf-8") as f:
