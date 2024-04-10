@@ -351,7 +351,7 @@ class PhiAttention(nn.Module):
 
         # Queries and keys upcast to fp32 is required by Phi-2 to avoid overflow
         attn_weights = torch.matmul(
-           query_states, key_states.transpose(-1, -2)
+          query_states.to(torch.float32),  key_states.to(torch.float32).transpose(2, 3)
         ) / math.sqrt(self.head_dim)
 
         if attn_weights.size() != (bsz, self.num_heads, q_len, kv_seq_len):
