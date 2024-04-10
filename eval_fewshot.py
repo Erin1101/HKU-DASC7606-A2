@@ -123,9 +123,9 @@ def example_formating(question, answer=None, candidate_answers=None, prompt_type
             prompt = f"Question: {question}\nCandidate answers: {candidate_answers}\nGold answer:"
     elif prompt_type == "v2.0":
         if answer is not None:
-            prompt = f"Question: {question}\Answer: {answer}"
+            prompt = f"Question: {question}\nAnswer: {answer}"
         else:
-            prompt = f"Question: {question}\Answer:"
+            prompt = f"Question: {question}\nAnswer:"
     else:
         raise NotImplementedError
     return prompt
@@ -257,7 +257,7 @@ def main():
         with torch.no_grad():
             # task 6
             outputs = model(encoding["input_ids"], encoding['labels'])
-            log_likelihood = outputs.loss
+            log_likelihood = outputs.logits[0, -1, :]
 
         print("Saving results to {}".format(output_file))
         with open(output_file, "w", encoding="utf-8") as f:
