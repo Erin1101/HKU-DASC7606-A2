@@ -123,9 +123,9 @@ def example_formating(question, answer=None, candidate_answers=None, prompt_type
             prompt = f"Question: {question}\nCandidate answers: {candidate_answers}\nGold answer:"
     elif prompt_type == "v2.0":
         if answer is not None:
-            prompt = f"Question: {question}\nCandidate answers: {candidate_answers}\nGold answer:{answer}"
+            prompt = f"Question: {question}\nGold answer:{answer}"
         else:
-            prompt = f"Question: {question}\nCandidate answers: {candidate_answers}\nGold answer:"
+            prompt = f"Question: {question}\nGold answer:"
     else:
         raise NotImplementedError
     return prompt
