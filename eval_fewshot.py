@@ -123,9 +123,9 @@ def example_formating(question, answer=None, candidate_answers=None, prompt_type
             prompt = f"Question: {question}\nCandidate answers: {candidate_answers}\nGold answer:"
     elif prompt_type == "v2.0":
         if answer is not None:
-            prompt = f"Question: {question}\nAnswer: {answer}"
+            prompt = f"Question: {question}\nCandidate answers: {candidate_answers}\nGold answer:{answer}"
         else:
-            prompt = f"Question: {question}\nAnswer:"
+            prompt = f"Question: {question}\nCandidate answers: {candidate_answers}\nGold answer:"
     else:
         raise NotImplementedError
     return prompt
@@ -258,7 +258,6 @@ def main():
             # task 6
             outputs = model(**encoding)
             log_likelihood = -outputs.loss
-            #log_likelihood = outputs.logits[0, -1, :]
 
         print("Saving results to {}".format(output_file))
         with open(output_file, "w", encoding="utf-8") as f:
