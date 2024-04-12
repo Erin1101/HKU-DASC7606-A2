@@ -1,0 +1,1 @@
+{"id": "MCAS_2004_9_20", "log_likelihood": -6.197474479675293, "question": "What part of a communication system converts binary codes in a computer into recognizable characters?", "candidate_answers": "(A) decoder (B) encoder (C) receiver (D) transmitter", "answer": "encoder", "label": "B", "answerKey": "A"}

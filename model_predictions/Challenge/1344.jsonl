@@ -1,0 +1,1 @@
+{"id": "Mercury_415081", "log_likelihood": -2.7209136486053467, "question": "In a rubber duck race, the winning duck traveled 300 meters in 10 minutes. What was the duck's average speed?", "candidate_answers": "(A) 0.5 m/s (B) 1.0 m/s (C) 7.5 m/s (D) 30 m/s", "answer": "1.0 m/s", "label": "B", "answerKey": "A"}

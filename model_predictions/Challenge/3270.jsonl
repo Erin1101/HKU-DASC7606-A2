@@ -1,0 +1,1 @@
+{"id": "MCAS_2006_9_34", "log_likelihood": -6.912056922912598, "question": "What is the voltage in a circuit with a current of 3 ohms and a total resistance of 12?", "candidate_answers": "(A) 0.25 V (B) 4 V (C) 15 V (D) 36 V", "answer": "4 V", "label": "B", "answerKey": "D"}

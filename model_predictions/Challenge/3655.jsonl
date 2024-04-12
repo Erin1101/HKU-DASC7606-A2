@@ -1,0 +1,1 @@
+{"id": "Mercury_405387", "log_likelihood": -3.533513069152832, "question": "The average temperatures over a four-month period were 31, 24, 18, and 12 degrees Celsius. What is the median temperature for these four months?", "candidate_answers": "(A) 15\u00b0C (B) 21\u00b0C (C) 27\u00b0C (D) 33\u00b0C", "answer": "15\u00b0C", "label": "A", "answerKey": "B"}

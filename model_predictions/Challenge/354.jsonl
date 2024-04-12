@@ -1,0 +1,1 @@
+{"id": "MCAS_2006_9_43", "log_likelihood": -1.1391017436981201, "question": "A pitcher throws a 0.15 kg baseball at 43 40 m/s towards the catcher. What is the momentum of the baseball while moving at 40 m/s?", "candidate_answers": "(A) 0.025 kg x m/s (B) 3.8 kg x m/s (C) 6.0 kg x m/s (D) 270 kg x m/s", "answer": "6.0 kg x m/s", "label": "C", "answerKey": "C"}

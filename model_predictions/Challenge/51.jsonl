@@ -1,0 +1,1 @@
+{"id": "Mercury_LBS10610", "log_likelihood": -8.440417289733887, "question": "The morning temperature in a city is 41\u00b0F. If a sunny, mild day is forecast, which temperature is most likely for 2:00 p.m.?", "candidate_answers": "(A) 32\u00b0 F (B) 41\u00b0 F (C) 78\u00b0 F (D) 98\u00b0 F", "answer": "98\u00b0 F", "label": "D", "answerKey": "C"}

@@ -1,0 +1,1 @@
+{"id": "Mercury_400440", "log_likelihood": -2.7809832096099854, "question": "What are the products in the reaction shown below? HCl + NaOH ->", "candidate_answers": "(A) Na + Cl_{2} (B) NaCL + OH (C) NaOH + Cl (D) NaCl + H_{2}O", "answer": "NaOH + Cl", "label": "C", "answerKey": "D"}

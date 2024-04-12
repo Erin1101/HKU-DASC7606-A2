@@ -1,0 +1,1 @@
+{"id": "MDSA_2007_5_2", "log_likelihood": -2.236668825149536, "question": "A student mixed 25 grams of salt into 1,000 grams of water. What is the mass of the saltwater mixture?", "candidate_answers": "(A) 975 grams (B) 1,000 grams (C) 1,025 grams (D) 2,500 grams", "answer": "1,000 grams", "label": "B", "answerKey": "C"}

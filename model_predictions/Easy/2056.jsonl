@@ -1,0 +1,1 @@
+{"id": "NYSEDREGENTS_2008_4_24", "log_likelihood": -1.3814902305603027, "question": "Which sequence shows the life cycle of some insects?", "candidate_answers": "(A) adult -> pupa -> larva -> egg (B) egg -> pupa -> larva -> adult (C) larva -> pupa -> egg -> adult (D) egg -> larva -> pupa -> adult", "answer": "egg -> pupa -> larva -> adult", "label": "B", "answerKey": "D"}
